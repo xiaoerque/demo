@@ -9,6 +9,6 @@ server:
 mybatis:
   configuration:
     aggressive-lazy-loading: true             #是否允许单条sql 返回多个数据集
-    map-underscore-to-camel-case: true        #java中一般使用驼峰命名 -user_name -userName
+    map-underscore-to-camel-case: true        #java中一般使用驼峰命名 -user_name -userNamed
   mapper-locations: mapper/**/*Mapper.xml
   type-aliases-package: com.pcwl.demo.**.domain
