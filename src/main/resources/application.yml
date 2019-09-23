@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/demo_test?serverTimezone=UTC
+    username: root
+    password: qwe123
+server:
+  port: 8081
+mybatis:
+  configuration:
+    aggressive-lazy-loading: true             #是否允许单条sql 返回多个数据集
+    map-underscore-to-camel-case: true        #java中一般使用驼峰命名 -user_name -userName
+  mapper-locations: mapper/**/*Mapper.xml
+  type-aliases-package: com.pcwl.demo.**.domain
