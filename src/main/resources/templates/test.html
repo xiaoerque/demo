@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>Title</title>
-    <link rel="stylesheet" href="css/test.css" type="text/css" />
-</head>
+<head th:include="include :: header"></head>
 <body>
-<h1>Hello gitHub</h1>
-<a th:href="@{/common/generator}">查看数据表</a>
-<a th:href="@{/demoStu/classinfo}">新添加的/demoStu/classinfo</a>
+    <div>
+        <h1 class="bg-warning">Hello Stranger</h1>
+        <ul>
+            <li>
+                <a th:href="@{/common/generator}" class="bg-info">查看数据表/common/generator</a><br/>
+            </li>
+            <li>
+                <a th:href="@{/demoStu/classinfo}" class="bg-danger">新添加的/demoStu/classinfo</a><br/>
+            </li>
+        </ul>
+        <button id="btn123" class="btn-info">展示123</button>
+    </div>
+
+    <div th:include="include::footer"></div>
 </body>
+<script>
+    $(function () {
+        $("#btn123").click(function () {
+            alert("123");
+        });
+    });
+</script>
 </html>

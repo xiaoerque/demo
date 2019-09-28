@@ -4,8 +4,11 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/demo_test?serverTimezone=UTC
     username: root
     password: qwe123
+  redis:
+    port: 6379
+    password:
 server:
-  port: 8081
+  port: 80
 mybatis:
   configuration:
     aggressive-lazy-loading: true             #是否允许单条sql 返回多个数据集

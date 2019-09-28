@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.pcwl.demo.common.service;
 
@@ -12,11 +12,11 @@ import java.util.Map;
  * @author 1992lcg@163.com
  * @Time 2017年9月6日
  * @description
- * 
+ *
  */
 @Service
 public interface GeneratorService {
-	List<Map<String, Object>> list();
+    List<Map<String, Object>> list();
 
-	byte[] generatorCode(String[] tableNames);
+    byte[] generatorCode(String[] tableNames);
 }

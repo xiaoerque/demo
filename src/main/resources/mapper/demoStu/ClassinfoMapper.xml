@@ -3,70 +3,71 @@
 
 <mapper namespace="com.pcwl.demo.demoStu.dao.ClassinfoDao">
 
-	<select id="get" resultType="com.pcwl.demo.demoStu.domain.ClassinfoDO">
-		select `classId`,`cName`,`cPresentation` from classinfo where classId = #{value}
-	</select>
+    <select id="get" resultType="com.pcwl.demo.demoStu.domain.ClassinfoDO">
+        select `classId`,`cName`,`cPresentation` from classinfo where classId = #{value}
+    </select>
 
-	<select id="list" resultType="com.pcwl.demo.demoStu.domain.ClassinfoDO">
-		select `classId`,`cName`,`cPresentation` from classinfo
-        <where>  
-		  		  <if test="classid != null and classid != ''"> and classId = #{classid} </if>
-		  		  <if test="cname != null and cname != ''"> and cName = #{cname} </if>
-		  		  <if test="cpresentation != null and cpresentation != ''"> and cPresentation = #{cpresentation} </if>
-		  		</where>
+    <select id="list" resultType="com.pcwl.demo.demoStu.domain.ClassinfoDO">
+        select `classId`,`cName`,`cPresentation` from classinfo
+        <where>
+            <if test="classid != null and classid != ''">and classId = #{classid}</if>
+            <if test="cname != null and cname != ''">and cName = #{cname}</if>
+            <if test="cpresentation != null and cpresentation != ''">and cPresentation = #{cpresentation}</if>
+        </where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
                 order by ${sort} ${order}
             </when>
-			<otherwise>
+            <otherwise>
                 order by classId desc
-			</otherwise>
+            </otherwise>
         </choose>
-		<if test="offset != null and limit != null">
-			limit #{offset}, #{limit}
-		</if>
-	</select>
-	
- 	<select id="count" resultType="int">
-		select count(*) from classinfo
-		 <where>  
-		  		  <if test="classid != null and classid != ''"> and classId = #{classid} </if>
-		  		  <if test="cname != null and cname != ''"> and cName = #{cname} </if>
-		  		  <if test="cpresentation != null and cpresentation != ''"> and cPresentation = #{cpresentation} </if>
-		  		</where>
-	</select>
-	 
-	<insert id="save" parameterType="com.pcwl.demo.demoStu.domain.ClassinfoDO" useGeneratedKeys="true" keyProperty="classid">
-		insert into classinfo
-		(
-			`cName`, 
-			`cPresentation`
-		)
-		values
-		(
-			#{cname}, 
-			#{cpresentation}
-		)
-	</insert>
-	 
-	<update id="update" parameterType="com.pcwl.demo.demoStu.domain.ClassinfoDO">
-		update classinfo 
-		<set>
-			<if test="cname != null">`cName` = #{cname}, </if>
-			<if test="cpresentation != null">`cPresentation` = #{cpresentation}</if>
-		</set>
-		where classId = #{classid}
-	</update>
-	
-	<delete id="remove">
-		delete from classinfo where classId = #{value}
-	</delete>
-	
-	<delete id="batchRemove">
-		delete from classinfo where classId in 
-		<foreach item="classid" collection="array" open="(" separator="," close=")">
-			#{classid}
-		</foreach>
-	</delete>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from classinfo
+        <where>
+            <if test="classid != null and classid != ''">and classId = #{classid}</if>
+            <if test="cname != null and cname != ''">and cName = #{cname}</if>
+            <if test="cpresentation != null and cpresentation != ''">and cPresentation = #{cpresentation}</if>
+        </where>
+    </select>
+
+    <insert id="save" parameterType="com.pcwl.demo.demoStu.domain.ClassinfoDO" useGeneratedKeys="true"
+            keyProperty="classid">
+        insert into classinfo
+        (
+        `cName`,
+        `cPresentation`
+        )
+        values
+        (
+        #{cname},
+        #{cpresentation}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.pcwl.demo.demoStu.domain.ClassinfoDO">
+        update classinfo
+        <set>
+            <if test="cname != null">`cName` = #{cname},</if>
+            <if test="cpresentation != null">`cPresentation` = #{cpresentation}</if>
+        </set>
+        where classId = #{classid}
+    </update>
+
+    <delete id="remove">
+        delete from classinfo where classId = #{value}
+    </delete>
+
+    <delete id="batchRemove">
+        delete from classinfo where classId in
+        <foreach item="classid" collection="array" open="(" separator="," close=")">
+            #{classid}
+        </foreach>
+    </delete>
 
 </mapper>

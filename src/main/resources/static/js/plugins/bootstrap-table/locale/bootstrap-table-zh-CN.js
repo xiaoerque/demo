@@ -1,6 +1,6 @@
 /**
  * Bootstrap Table Chinese translation
- * Author: Zhixin Wen<wenzhixin2010@gmail.com>
+ * Author: pengP <xiaoerque@126.com>
  */
 (function ($) {
     'use strict';
