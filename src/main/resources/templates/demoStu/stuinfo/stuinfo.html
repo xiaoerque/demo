@@ -9,11 +9,11 @@
             <div class="ibox-body">
                 <div class="fixed-table-toolbar">
                     <div class="columns pull-left">
-                        <button shiro:hasPermission="${pathName}:${classname}:add" type="button"
+                        <button shiro:hasPermission="demoStu:stuinfo:add" type="button"
                                 class="btn  btn-primary" onclick="add()">
                             <i class="fa fa-plus" aria-hidden="true"></i>添加
                         </button>
-                        <button shiro:hasPermission="${pathName}:${classname}:batchRemove" type="button"
+                        <button shiro:hasPermission="demoStu:stuinfo:batchRemove" type="button"
                                 class="btn  btn-danger"
                                 onclick="batchRemove()">
                             <i class="fa fa-trash" aria-hidden="true"></i>删除
@@ -34,6 +34,6 @@
     </div>
 </div>
 <div th:include="include :: footer"></div>
-<script type="text/javascript" src="/js/appjs/${pathName}/${classname}/${classname}.js"></script>
+<script type="text/javascript" src="/js/appjs/demoStu/stuinfo/stuinfo.js"></script>
 </body>
 </html>

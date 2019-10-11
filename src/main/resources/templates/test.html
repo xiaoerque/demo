@@ -2,7 +2,7 @@
 <html lang="en">
 <head th:include="include :: header"></head>
 <body>
-    <div>
+    <div class="nav">
         <h1 class="bg-warning">Hello Stranger</h1>
         <ul>
             <li>
@@ -14,6 +14,13 @@
         </ul>
         <button id="btn123" class="btn-info">展示123</button>
     </div>
+
+    <table class="table-bordered" align="center" border="2">
+        <tr>
+            <td><a th:href="@{/common/generator}">查看数据表/common/generator</a></td>
+            <td><a th:href="@{/demoStu/classinfo}">新添加的/demoStu/classinfo</a></td>
+        </tr>
+    </table>
 
     <div th:include="include::footer"></div>
 </body>

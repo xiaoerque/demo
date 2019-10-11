@@ -1,4 +1,4 @@
-var prefix = "/${pathName}/${classname}"
+var prefix = "/demoStu/stuinfo"
 $(function () {
     load();
 });
@@ -46,25 +46,43 @@ function load() {
                     {
                         checkbox: true
                     },
-                    #foreach($column in $columns)
-                        {
-                            field: '${column.attrname}',
-                            title: '${column.comments}'
+                                            {
+                            field: 'sid',
+                            title: 'ID'
                         },
-                    #end
-                    {
+                                            {
+                            field: 'sname',
+                            title: '姓名'
+                        },
+                                            {
+                            field: 'spwd',
+                            title: '英文名'
+                        },
+                                            {
+                            field: 'sex',
+                            title: '性别'
+                        },
+                                            {
+                            field: 'sbirthday',
+                            title: '出生年月'
+                        },
+                                            {
+                            field: 'classid',
+                            title: '所属班级'
+                        },
+                                        {
                         title: '操作',
                         field: 'id',
                         align: 'center',
                         formatter: function (value, row, index) {
                             var e = '<a class="btn btn-primary btn-sm" href="#" mce_href="#" title="编辑" onclick="edit(\''
-                                + row.${pk.attrname}
+                                + row.sid
                                 + '\')"><i class="fa fa-edit"></i>编辑</a> ';
                             var d = '<a class="btn btn-warning btn-sm" href="#" title="删除"  mce_href="#" onclick="remove(\''
-                                + row.${pk.attrname}
+                                + row.sid
                                 + '\')"><i class="fa fa-remove"></i>删除</a> ';
                             var f = '<a class="btn btn-success btn-sm" href="#" title="备用"  mce_href="#" onclick="resetPwd(\''
-                                + row.${pk.attrname}
+                                + row.sid
                                 + '\')"><i class="fa fa-key"></i></a> ';
                             return e + d;
                         }
@@ -102,7 +120,7 @@ function remove(id) {
             url: prefix + "/remove",
             type: "post",
             data: {
-                '${pk.attrname}': id
+                'sid': id
             },
             success: function (r) {
                 if (r.code == 0) {
@@ -131,7 +149,7 @@ function batchRemove() {
         var ids = new Array();
         // 遍历所有选择的行数据，取每条数据对应的ID
         $.each(rows, function (i, row) {
-            ids[i] = row['${pk.attrname}'];
+            ids[i] = row['sid'];
         });
         $.ajax({
             type: 'POST',

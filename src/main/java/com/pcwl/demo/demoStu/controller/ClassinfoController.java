@@ -34,14 +34,12 @@ public class ClassinfoController {
     private ClassinfoService classinfoService;
 
     @GetMapping()
-        //@RequiresPermissions("demoStu:classinfo:classinfo")
     String Classinfo() {
         return "demoStu/classinfo/classinfo";
     }
 
     @ResponseBody
     @GetMapping("/list")
-    //@RequiresPermissions("demoStu:classinfo:classinfo")
     public PageUtils list(@RequestParam Map<String, Object> params) {
         //查询列表数据
         Query query = new Query(params);
@@ -52,7 +50,6 @@ public class ClassinfoController {
     }
 
     @GetMapping("/add")
-        //@RequiresPermissions("demoStu:classinfo:add")
     String add() {
         return "demoStu/classinfo/add";
     }

@@ -1,4 +1,4 @@
-package ${package}.controller;
+package com.pcwl.demo.demoStu.controller;
 
 import java.util.List;
 import java.util.Map;
@@ -14,29 +14,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import ${package}.domain.${className}DO;
-import ${package}.service.${className}Service;
+import com.pcwl.demo.demoStu.domain.StuinfoDO;
+import com.pcwl.demo.demoStu.service.StuinfoService;
 import com.pcwl.demo.common.utils.PageUtils;
 import com.pcwl.demo.common.utils.Query;
 import com.pcwl.demo.common.utils.R;
 
 /**
- * ${comments}
+ * 
  *
- * @author ${author}
- * @email ${email}
- * @date ${datetime}
+ * @author pengPeng
+ * @email xiaoerque@126.com
+ * @date 2019-10-11 12:54:16
  */
 
 @Controller
-@RequestMapping("/${pathName}/${classname}")
-public class ${className}Controller {
+@RequestMapping("/demoStu/stuinfo")
+public class StuinfoController {
     @Autowired
-    private ${className}Service ${classname}Service;
+    private StuinfoService stuinfoService;
 
     @GetMapping()
-    String ${className}() {
-        return "${pathName}/${classname}/${classname}";
+    String Stuinfo() {
+        return "demoStu/stuinfo/stuinfo";
     }
 
     @ResponseBody
@@ -44,22 +44,22 @@ public class ${className}Controller {
     public PageUtils list(@RequestParam Map<String, Object> params) {
         //查询列表数据
         Query query = new Query(params);
-        List<${className}DO> ${classname}List = ${classname}Service.list(query);
-        int total = ${classname}Service.count(query);
-        PageUtils pageUtils = new PageUtils(${classname}List, total);
+        List<StuinfoDO> stuinfoList = stuinfoService.list(query);
+        int total = stuinfoService.count(query);
+        PageUtils pageUtils = new PageUtils(stuinfoList, total);
         return pageUtils;
     }
 
     @GetMapping("/add")
     String add() {
-        return "${pathName}/${classname}/add";
+        return "demoStu/stuinfo/add";
     }
 
-    @GetMapping("/edit/{${pk.attrname}}")
-    String edit(@PathVariable("${pk.attrname}") ${pk.attrType} ${pk.attrname}, Model model) {
-            ${className}DO ${classname} = ${classname}Service.get(${pk.attrname});
-        model.addAttribute("${classname}", ${classname});
-        return "${pathName}/${classname}/edit";
+    @GetMapping("/edit/{sid}")
+    String edit(@PathVariable("sid") Integer sid, Model model) {
+            StuinfoDO stuinfo = stuinfoService.get(sid);
+        model.addAttribute("stuinfo", stuinfo);
+        return "demoStu/stuinfo/edit";
     }
 
     /**
@@ -67,8 +67,8 @@ public class ${className}Controller {
      */
     @ResponseBody
     @PostMapping("/save")
-    public R save( ${className}DO ${classname}) {
-        if (${classname}Service.save(${classname}) > 0) {
+    public R save( StuinfoDO stuinfo) {
+        if (stuinfoService.save(stuinfo) > 0) {
             return R.ok();
         }
         return R.error();
@@ -79,8 +79,8 @@ public class ${className}Controller {
      */
     @ResponseBody
     @RequestMapping("/update")
-    public R update( ${className}DO ${classname}) {
-            ${classname}Service.update(${classname});
+    public R update( StuinfoDO stuinfo) {
+            stuinfoService.update(stuinfo);
         return R.ok();
     }
 
@@ -89,8 +89,8 @@ public class ${className}Controller {
      */
     @PostMapping("/remove")
     @ResponseBody
-    public R remove( ${pk.attrType} ${pk.attrname}) {
-        if (${classname}Service.remove(${pk.attrname}) > 0) {
+    public R remove( Integer sid) {
+        if (stuinfoService.remove(sid) > 0) {
             return R.ok();
         }
         return R.error();
@@ -101,8 +101,8 @@ public class ${className}Controller {
      */
     @PostMapping("/batchRemove")
     @ResponseBody
-    public R remove(@RequestParam("ids[]") ${pk.attrType}[] ${pk.attrname}s) {
-            ${classname}Service.batchRemove(${pk.attrname}s);
+    public R remove(@RequestParam("ids[]") Integer[] sids) {
+            stuinfoService.batchRemove(sids);
         return R.ok();
     }
 

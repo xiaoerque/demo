@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pcwl.demo.demoStu.dao.StuinfoDao">
+
+    <select id="get" resultType="com.pcwl.demo.demoStu.domain.StuinfoDO">
+        select `sId`,`sName`,`sPwd`,`sex`,`sBirthday`,`classId`        from stuinfo where sId = #{value}
+    </select>
+
+    <select id="list" resultType="com.pcwl.demo.demoStu.domain.StuinfoDO">
+        select `sId`,`sName`,`sPwd`,`sex`,`sBirthday`,`classId`        from stuinfo
+        <where>
+                            <if test="sid != null and sid != ''">and sId =
+                    #{sid}
+                </if>
+                            <if test="sname != null and sname != ''">and sName =
+                    #{sname}
+                </if>
+                            <if test="spwd != null and spwd != ''">and sPwd =
+                    #{spwd}
+                </if>
+                            <if test="sex != null and sex != ''">and sex =
+                    #{sex}
+                </if>
+                            <if test="sbirthday != null and sbirthday != ''">and sBirthday =
+                    #{sbirthday}
+                </if>
+                            <if test="classid != null and classid != ''">and classId =
+                    #{classid}
+                </if>
+                    </where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                order by sId desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from stuinfo
+        <where>
+                            <if test="sid != null and sid != ''">and sId =
+                    #{sid}
+                </if>
+                            <if test="sname != null and sname != ''">and sName =
+                    #{sname}
+                </if>
+                            <if test="spwd != null and spwd != ''">and sPwd =
+                    #{spwd}
+                </if>
+                            <if test="sex != null and sex != ''">and sex =
+                    #{sex}
+                </if>
+                            <if test="sbirthday != null and sbirthday != ''">and sBirthday =
+                    #{sbirthday}
+                </if>
+                            <if test="classid != null and classid != ''">and classId =
+                    #{classid}
+                </if>
+                    </where>
+    </select>
+
+    <insert id="save" parameterType="com.pcwl.demo.demoStu.domain.StuinfoDO"            useGeneratedKeys="true" keyProperty="sid">
+        insert into stuinfo
+        (
+                                                        `sName`, 
+                                                `sPwd`, 
+                                                `sex`, 
+                                                `sBirthday`, 
+                                                `classId`
+                            )
+        values
+        (
+                                                        #{sname}, 
+                                                #{spwd}, 
+                                                #{sex}, 
+                                                #{sbirthday}, 
+                                                #{classid}
+                            )
+    </insert>
+
+    <update id="update" parameterType="com.pcwl.demo.demoStu.domain.StuinfoDO">
+        update stuinfo
+        <set>
+                                                                            <if test="sname != null">`sName` = #{sname
+                        }, </if>
+                                                                <if test="spwd != null">`sPwd` = #{spwd
+                        }, </if>
+                                                                <if test="sex != null">`sex` = #{sex
+                        }, </if>
+                                                                <if test="sbirthday != null">`sBirthday` = #{sbirthday
+                        }, </if>
+                                                                <if test="classid != null">`classId` = #{classid
+                        }</if>
+                                    </set>
+        where sId = #{sid}
+    </update>
+
+    <delete id="remove">
+        delete from stuinfo where sId = #{value}
+    </delete>
+
+    <delete id="batchRemove">
+        delete from stuinfo where sId in
+        <foreach item="sid" collection="array" open="(" separator="," close=")">
+            #{sid}
+        </foreach>
+    </delete>
+
+</mapper>
