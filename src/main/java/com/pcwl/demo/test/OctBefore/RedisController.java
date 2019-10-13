@@ -1,4 +1,4 @@
-package com.pcwl.demo.test;
+package com.pcwl.demo.test.OctBefore;
 
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,9 +14,9 @@ public class RedisController {
     private RedisTemplate<String,String> template;
     @RequestMapping(value = {"dd"},produces = {"application/text"})
     public String testRedis(){
-        template.opsForHash().putIfAbsent("hca","hhca","号称按");
+        template.opsForHash().putIfAbsent("hca","hhca","郝先生");
         System.out.println(template.opsForHash().get("hca","hhca"));
-        template.opsForValue().set("ztt","张婷婷",50, TimeUnit.SECONDS);
+        template.opsForValue().set("gq","国强",50, TimeUnit.SECONDS);
         return "abcd";
     }
 }
