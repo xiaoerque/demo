@@ -1,5 +1,7 @@
 package com.pcwl.demo.demoStu.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -81,13 +83,6 @@ public class StuinfoDO implements Serializable {
             return sex;
         }
 
-    public String getSbirthday() {
-        return sbirthday;
-    }
-
-    public void setSbirthday(String sbirthday) {
-        this.sbirthday = sbirthday;
-    }
 /**
          * 设置：
          */
@@ -98,6 +93,13 @@ public class StuinfoDO implements Serializable {
         /**
          * 获取：
          */
+    public String getSbirthday() {
+        return sbirthday;
+    }
+
+    public void setSbirthday(String sbirthday) {
+        this.sbirthday = sbirthday;
+    }
         /*public Date getSbirthday() {
             return sbirthday;
         }*/

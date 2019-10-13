@@ -1,0 +1,84 @@
+<html>
+<head th:include="include :: header"></head>
+<body>
+<div class="container">
+    <form action="" class="form-horizontal"  role="form">
+         <fieldset>
+            <legend>1.作为组件使用：</legend>
+            <div>
+                <div class="input-group date timeOne pull-right col-md-3">
+                    <input id="timeOne" name="timeOne" class="form-control" type="text" placeholder="日期" value="" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>2.绑定输入框：并设置format选项</legend>
+            <div>
+                <div class="pull-right input-group">
+                    <input class="form-control" type="text" value="" id="timeTwo">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>3.绑定输入框：并设置format标记</legend>
+            <div>
+                <div class="pull-right input-group">
+                    <input class="form-control" type="text" value="" id="timeThree" data-date-format="yyyy-mm-dd">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>4.作为内联日期时间选择器</legend>
+            <div id="timeFour" class="pull-right"></div>
+        </fieldset>
+    </form>
+</div>
+<div th:include="include :: footer"></div>
+</body>
+<script type="text/javascript">
+    //如果用datetimepicker组件,复制过去粘贴即可
+    //https://www.bootcss.com/p/bootstrap-datetimepicker/index.htm
+    $('.timeOne').datetimepicker({
+        language:  'zh-CN',                 //语言
+        format: 'yyyy-mm-dd hh:ii:ss',      //日期格式
+        weekStart: 1,                       //一周从哪一天开始
+        //startDate:,                       //Date. 默认值：开始时间
+        //endDate:,                         //Date. 默认值：结束时间
+        todayBtn:  true,                    //当日按钮
+        autoclose: true,                    //选择一个日期之后是否立即关闭
+        todayHighlight: 1,                  //高亮当前日期
+        startView: 2,                       //优先视图:0 hour 1 day 2 month 3year 4decade
+        forceParse: false,                  //强制解析输入框中的值
+        showMeridian: 1                     //此选项将为日视图和小时视图启用子午线视图
+    }).on('changeDate',function (ev) {
+        //alert(ev.date());
+        alert($('#timeOne').val());
+    });
+    $('#timeTwo').datetimepicker({
+        format:'yyyy-mm-dd hh:ii:ss'
+    });
+    $('#timeThree').datetimepicker({});
+    $('#timeFour').datetimepicker();
+</script>
+</html>
+<!--
+1.作为组件使用：
+    <div class="input-append date" id="datetimepicker" data-date="12-02-2012" data-date-format="dd-mm-yyyy">
+        <input size="16" type="text" value="12-02-2012" readonly>
+        <span class="add-on"><i class="icon-th"></i></span>
+    </div>
+    $('#datetimepicker').datetimepicker();
+2.绑定输入框，并设置format选项：
+    <input type="text" value="2012-05-15 21:05" id="datetimepicker">
+    $('#datetimepicker').datetimepicker({
+    format: 'yyyy-mm-dd hh:ii'
+    });
+3.绑定输入框，并设置format标记：
+    <input type="text" value="2012-05-15 21:05" id="datetimepicker" data-date-format="yyyy-mm-dd hh:ii">
+    $('#datetimepicker').datetimepicker();
+4.作为内联日期时间选择器：
+    <div id="datetimepicker"></div>
+    $('#datetimepicker').datetimepicker();
+-->

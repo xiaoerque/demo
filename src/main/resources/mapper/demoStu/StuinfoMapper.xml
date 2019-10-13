@@ -13,8 +13,8 @@
                             <if test="sid != null and sid != ''">and sId =
                     #{sid}
                 </if>
-                            <if test="sname != null and sname != ''">and sName =
-                    #{sname}
+                            <if test="sname != null and sname != ''">and sName like CONCAT('%',CONCAT(#{sname},'%'))
+
                 </if>
                             <if test="spwd != null and spwd != ''">and sPwd =
                     #{spwd}
@@ -22,8 +22,7 @@
                             <if test="sex != null and sex != ''">and sex =
                     #{sex}
                 </if>
-                            <if test="sbirthday != null and sbirthday != ''">and sBirthday =
-                    #{sbirthday}
+                            <if test="sbirthday != null and sbirthday != ''">and  Date(sBirthday) &gt;= Date(#{sbirthday})
                 </if>
                             <if test="classid != null and classid != ''">and classId =
                     #{classid}
@@ -48,8 +47,7 @@
                             <if test="sid != null and sid != ''">and sId =
                     #{sid}
                 </if>
-                            <if test="sname != null and sname != ''">and sName =
-                    #{sname}
+                            <if test="sname != null and sname != ''">and sName like CONCAT('%',CONCAT(#{sname},'%'))
                 </if>
                             <if test="spwd != null and spwd != ''">and sPwd =
                     #{spwd}
@@ -57,8 +55,7 @@
                             <if test="sex != null and sex != ''">and sex =
                     #{sex}
                 </if>
-                            <if test="sbirthday != null and sbirthday != ''">and sBirthday =
-                    #{sbirthday}
+                            <if test="sbirthday != null and sbirthday != ''">and  Date(sBirthday) &gt;= Date(#{sbirthday})
                 </if>
                             <if test="classid != null and classid != ''">and classId =
                     #{classid}
