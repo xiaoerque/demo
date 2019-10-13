@@ -1,9 +1,8 @@
 package com.pcwl.demo.test.ymlBean;
 
-public class YmlBeanConfiguration {
-    /**
-     * 获取application.yml文件里面mybatis下面的configuration
-     */
+
+public class YmlConfiguration {
+
     private String aggressiveLazyLoading;
     private String mapUnderscoreToCamelCase;
 
@@ -25,15 +24,9 @@ public class YmlBeanConfiguration {
 
     @Override
     public String toString() {
-        return "YmlBeanConfiguration{" +
+        return "YmlConfiguration{" +
                 "aggressiveLazyLoading='" + aggressiveLazyLoading + '\'' +
                 ", mapUnderscoreToCamelCase='" + mapUnderscoreToCamelCase + '\'' +
                 '}';
     }
-
-    public YmlBeanConfiguration(String aggressiveLazyLoading, String mapUnderscoreToCamelCase) {
-        this.aggressiveLazyLoading = aggressiveLazyLoading;
-        this.mapUnderscoreToCamelCase = mapUnderscoreToCamelCase;
-    }
-
 }

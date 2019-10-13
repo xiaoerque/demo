@@ -13,7 +13,7 @@ public class YmlBeanMybatis {
  */
     private String mapperLocations;
     private String typeAliasesPackage;
-    private YmlBeanConfiguration ybc;
+    private YmlConfiguration configuration;
 
     public String getMapperLocations() {
         return mapperLocations;
@@ -31,21 +31,12 @@ public class YmlBeanMybatis {
         this.typeAliasesPackage = typeAliasesPackage;
     }
 
-    public YmlBeanConfiguration getYbc() {
-        return ybc;
+    public YmlConfiguration getConfiguration() {
+        return configuration;
     }
 
-    public void setYbc(YmlBeanConfiguration ybc) {
-        this.ybc = ybc;
-    }
-
-    public YmlBeanMybatis(String mapperLocations, String typeAliasesPackage, YmlBeanConfiguration ybc) {
-        this.mapperLocations = mapperLocations;
-        this.typeAliasesPackage = typeAliasesPackage;
-        this.ybc = ybc;
-    }
-
-    public YmlBeanMybatis() {
+    public void setConfiguration(YmlConfiguration configuration) {
+        this.configuration = configuration;
     }
 
     @Override
@@ -53,7 +44,16 @@ public class YmlBeanMybatis {
         return "YmlBeanMybatis{" +
                 "mapperLocations='" + mapperLocations + '\'' +
                 ", typeAliasesPackage='" + typeAliasesPackage + '\'' +
-                ", ybc=" + ybc +
+                ", configuration=" + configuration +
                 '}';
+    }
+
+    public YmlBeanMybatis(String mapperLocations, String typeAliasesPackage, YmlConfiguration configuration) {
+        this.mapperLocations = mapperLocations;
+        this.typeAliasesPackage = typeAliasesPackage;
+        this.configuration = configuration;
+    }
+
+    public YmlBeanMybatis() {
     }
 }
