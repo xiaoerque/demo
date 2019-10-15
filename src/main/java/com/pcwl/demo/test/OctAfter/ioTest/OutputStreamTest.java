@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 
 
-public class outputStreamTest {
+public class OutputStreamTest {
     //
     public static void main(String[] args) throws Exception {
         File file = new File("E:"+File.separator+"Stream"+File.separator+"OutPut"+File.separator+"outPutStream.txt");
