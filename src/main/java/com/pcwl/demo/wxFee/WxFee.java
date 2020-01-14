@@ -1,4 +1,4 @@
-package com.pcwl.demo.test.wxFee;
+package com.pcwl.demo.wxFee;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
